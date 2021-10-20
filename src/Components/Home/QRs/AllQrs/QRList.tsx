@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import * as SC from '../QrStyles'
 import {getUUID} from "../../../../selector/selectors";
 import {useSelector} from "react-redux";
