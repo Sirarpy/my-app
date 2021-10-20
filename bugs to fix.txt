@@ -1,0 +1,7 @@
+******************** BUGS ****************
+
+1. qr image download                 +
+2. Sound                             +
+3. Sign Up button language           +
+4. i18next: languageChanged en       -
+5. back buttons                      -
