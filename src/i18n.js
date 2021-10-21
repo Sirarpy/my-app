@@ -27,8 +27,8 @@ i18n
             escapeValue: false, // not needed for react as it escapes by default
         },
         react: {
-            // useSuspense: false,
-            useSuspense: true,
+            useSuspense: false,
+            // useSuspense: true,
             wait: false,
         },
     }).then(r => r    );
