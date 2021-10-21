@@ -9,6 +9,7 @@ import Modal from '@mui/material/Modal';
 import CircularIndeterminate from "../Loader/loader";
 import {getLoader} from "../../../selector/selectors";
 import {useTranslation} from 'react-i18next';
+import {Back} from "../../Back/Back";
 
 export const SignUpLayout: React.FC = () => {
     const {t} = useTranslation();
@@ -51,6 +52,7 @@ export const SignUpLayout: React.FC = () => {
             <SC.Button onClick={generateUUID}>
                 {t('getUU')}
             </SC.Button>
+            <Back />
             <Modal
                 open={open}
                 aria-labelledby="parent-modal-title"

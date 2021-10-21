@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 import {getUUID} from "../../selector/selectors";
 import _ from "lodash";
 import {useTranslation} from 'react-i18next';
+import {Back} from "../Back/Back";
 
 
 interface AvatarType {
@@ -54,6 +55,7 @@ export const Home: React.FC = () => {
                 <SeeAllQrs/>
                 <GenerateQr/>
             </SC.HomeContent>
+            <Back />
         </SC.HomeContainer>
     )
 }

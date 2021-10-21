@@ -30,7 +30,7 @@ export const MainLayout: React.FC = () => {
                 <Switch>
                     <Route path="/" exact component={ChooseApp}/>
                     <Route path="/cocktail" component={CocktailBanner}/>
-                    <Route path="/currentcoctail" component={CocktailDescription}/>
+                    <Route path="/currentCocktail" component={CocktailDescription}/>
                     <MainLayoutContainer>
                         <Languages/>
                         <Route path="/login" component={LogInLayout}/>

@@ -5,6 +5,7 @@ import * as SC from '../AuthenticationStyles'
 import {setLogin, setUUID} from "../../../redux/auth/authSlice";
 import {REGEXP} from "../../../constants";
 import {useTranslation} from 'react-i18next';
+import {Back} from "../../Back/Back";
 
 interface UserType {
     uuid: string
@@ -47,6 +48,12 @@ export const LogInLayout: React.FC = () => {
                     {t('loginStart')}
                 </SC.Link>
             </SC.Button>
+            {/*<SC.Button onClick={() => goToCurrentPage('/')}>*/}
+            {/*    <SC.Link>*/}
+            {/*        {t('back')}*/}
+            {/*    </SC.Link>*/}
+            {/*</SC.Button>*/}
+            <Back />
             <SC.Span onClick={() => goToCurrentPage('/signup')}>
                 {t('noUUid')}
             </SC.Span>

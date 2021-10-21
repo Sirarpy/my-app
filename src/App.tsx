@@ -1,14 +1,12 @@
-import React  from 'react';
+import React from 'react';
 import {MainLayout} from "./Components/mainLayout";
 
 
 const App: React.FC = () => {
     return (
         <>
-                            <MainLayout/>
-
+            <MainLayout/>
         </>
-
     );
 }
 

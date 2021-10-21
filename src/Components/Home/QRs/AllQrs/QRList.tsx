@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import _ from "lodash";
 import Modal from '@mui/material/Modal';
 import {useTranslation} from 'react-i18next';
+import {Back} from "../../../Back/Back";
 
 interface UserType {
     uuid: string
@@ -81,6 +82,7 @@ export const QRList: React.FC = () => {
                         )
                     }) : false
             }
+            <Back />
         </SC.QRContainer>
     )
 }

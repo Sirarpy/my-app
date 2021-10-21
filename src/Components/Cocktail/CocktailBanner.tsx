@@ -4,21 +4,21 @@ import './cocktailStyle/cocktail.css';
 import bg from './cocktailStyle/cocktailImg/hbg.png';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchData} from "../../redux/cocktail/cocktailSlice";
-import { getShake, getPlay} from "../../selector/selectors";
+import {getShake, getPlay} from "../../selector/selectors";
+import {Back} from "../Back/Back";
+import soundFile from './bgsound.mp3'
 import {useHistory} from "react-router-dom";
 
 export const CocktailBanner: React.FC = () => {
     const dispatch = useDispatch()
     const shake = useSelector(getShake)
     const play = useSelector(getPlay)
-    const history = useHistory();
-
-    const sound: string = require('./cocktailStyle/bgsound.mp3')
+    const history = useHistory()
 
     const getCocktail = () => {
         dispatch(fetchData("https://www.thecocktaildb.com/api/json/v1/1/random.php"))
-        setTimeout(()=>{
-            history.push('/currentcoctail')
+        setTimeout(() => {
+            history.push('/currentCocktail')
         }, 3000)
     }
 
@@ -32,9 +32,10 @@ export const CocktailBanner: React.FC = () => {
     return (
         <SC.CocktailBG id="box">
             <SC.CocktailBGImage src={bg} alt="cocktailBG" onClick={getCocktail} className={shake ? 'shake' : ""}/>
-            <audio className='audio-element'>
-                <source src={sound}/>
+            <audio className='audio-element' >
+                <source src={soundFile}/>
             </audio>
+            <Back/>
         </SC.CocktailBG>
     )
 }

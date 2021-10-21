@@ -5,6 +5,7 @@ import {getUUID} from "../../../../selector/selectors";
 import {useHistory} from "react-router-dom";
 import {useTranslation} from 'react-i18next';
 import {URLToBase64} from "../../../../helpers/URLToBase64";
+import {Back} from "../../../Back/Back";
 
 export const QRCreate: React.FC = () => {
     const {t} = useTranslation();
@@ -80,6 +81,7 @@ export const QRCreate: React.FC = () => {
                             onChange={getQR}/>
                 <SC.QRButton value="Generate" onClick={generateQR}>{t('generateMyQR')}</SC.QRButton>
                 <SC.QRButton onClick={saveQRs}>{t('SaveQR')}</SC.QRButton>
+                <Back />
                 <p>{message}</p>
             </SC.QRContainer>
         </>

@@ -16,3 +16,8 @@ declare interface CocktailDefinedType {
     drinks: {}
     shake: boolean
 }
+
+declare module '*.mp3' {
+    const src: string;
+    export default src;
+}

@@ -15,7 +15,11 @@ export const CocktailBGImage = styled.img`
   width: 100%;
   object-fit: contain;
 `;
+export const Back = styled.p`
+  font-size: 20px;
+  padding: 10px 15px;
 
+`;
 export const CurrentDrinkBG = styled.div`
   width: 100%;
   background-image: url(${bg});

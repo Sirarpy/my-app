@@ -8,7 +8,7 @@ export const Languages: React.FC = () => {
     const {i18n} = useTranslation();
 
     const changeLanguage = (lng: any) => {
-        i18n.changeLanguage(lng);
+        i18n.changeLanguage(lng).then(r => console.log(r));
     };
 
     return (

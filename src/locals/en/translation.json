@@ -20,5 +20,6 @@
   "myQRlist": "My QR'S List",
   "preview": "preview",
   "qrTitle": "QR Title",
-  "delete" : "Delete"
+  "delete" : "Delete",
+  "back" : "Back"
 }
