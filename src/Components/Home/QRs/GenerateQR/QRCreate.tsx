@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import * as SC from '../QrStyles'
 import {useSelector} from "react-redux";
 import {getUUID} from "../../../../selector/selectors";
@@ -33,8 +33,7 @@ export const QRCreate: React.FC = () => {
 
     const generateQR = () => {
         dispatch(setQrLoader(true))
-
-        setTimeout(()=>{
+        setTimeout(() => {
             let size = "500x500"
             let data = inputValue;
             let title = qrTitle
@@ -49,13 +48,12 @@ export const QRCreate: React.FC = () => {
         }, 1000)
     }
 
-    useEffect(() => {
+    if (url !== "" && url) {
         URLToBase64(url, function (myBase64: any) {
             setbase64(myBase64)
         })
-    })
-
-
+    }
+    // console.log(base64)
     if (qrLoader) {
         return (
             <CircularIndeterminate/>
@@ -79,7 +77,6 @@ export const QRCreate: React.FC = () => {
         localStorage.setItem('users', JSON.stringify(userWithQR))
         history.push('/home')
     }
-
 
     return (
         <>
