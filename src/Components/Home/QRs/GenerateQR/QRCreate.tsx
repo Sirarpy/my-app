@@ -33,19 +33,17 @@ export const QRCreate: React.FC = () => {
 
     const generateQR = () => {
         dispatch(setQrLoader(true))
-        setTimeout(() => {
-            let size = "500x500"
-            let data = inputValue;
-            let title = qrTitle
-            // **************** added s ********************
-            let apiUrl = "http://api.qrserver.com/v1/create-qr-code/";
-            if (data && data !== "" && title !== "") {
-                setUrl(`${apiUrl}?data=${data}&size=${size}`)
-            } else {
-                setMessage("Fill all Inputs")
-            }
-            dispatch(setQrLoader(false))
-        }, 1000)
+        let size = "500x500"
+        let data = inputValue;
+        let title = qrTitle
+        // **************** added s ********************
+        let apiUrl = "https://api.qrserver.com/v1/create-qr-code/";
+        if (data && data !== "" && title !== "") {
+            setUrl(`${apiUrl}?data=${data}&size=${size}`)
+        } else {
+            setMessage("Fill all Inputs")
+        }
+        dispatch(setQrLoader(false))
     }
 
     if (url !== "" && url) {
@@ -53,7 +51,6 @@ export const QRCreate: React.FC = () => {
             setbase64(myBase64)
         })
     }
-    // console.log(base64)
     if (qrLoader) {
         return (
             <CircularIndeterminate/>
