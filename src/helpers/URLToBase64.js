@@ -3,7 +3,6 @@ export const URLToBase64 = (url, callback) => {
     xhr.open("GET", url, true);
     xhr.responseType = "blob";
     xhr.onload = function () {
-        console.log(this.response);
         let reader = new FileReader();
         reader.onload = function(event) {
             callback(reader.result);

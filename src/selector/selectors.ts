@@ -14,3 +14,4 @@ export const getShake = createSelector(CocktailState, (state) => state.shake)
 export const getDrinks = createSelector(CocktailState, (state) => state.drinks)
 
 export const getQrLoader = createSelector(QrLoaderState, (state) => state.qrLoader)
+export const getQrUrl = createSelector(QrLoaderState, (state) => state.qrsUrl)

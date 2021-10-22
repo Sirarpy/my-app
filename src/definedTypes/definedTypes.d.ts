@@ -21,6 +21,7 @@ declare interface CocktailDefinedType {
 
 declare interface QrLoaderDefinedType {
     qrLoader: boolean
+    qrsUrl: string
 }
 
 declare module '*.mp3' {
