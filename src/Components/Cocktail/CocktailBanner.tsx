@@ -25,7 +25,7 @@ export const CocktailBanner: React.FC = () => {
     if (play && shake) {
         const audioEl = document.getElementsByClassName("audio-element")[0]
         if (audioEl instanceof HTMLAudioElement) {
-            audioEl.play().then(res => console.log(res)).catch(err => audioEl.pause())
+            audioEl.play().then(res => res).catch(err => audioEl.pause())
         }
     }
 

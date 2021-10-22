@@ -39,6 +39,8 @@ export const SignUpLayout: React.FC = () => {
         history.push('/login')
     };
 
+
+
     if (loading) {
         return (
             <CircularIndeterminate/>

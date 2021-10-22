@@ -1,6 +1,7 @@
 declare interface STORE_TYPE {
     main: RegDefinedTypes
     cocktail: CocktailDefinedType
+    loader: QrLoaderDefinedType
 }
 
 declare interface RegDefinedTypes {
@@ -15,6 +16,11 @@ declare interface CocktailDefinedType {
     play: boolean
     drinks: {}
     shake: boolean
+
+}
+
+declare interface QrLoaderDefinedType {
+    qrLoader: boolean
 }
 
 declare module '*.mp3' {

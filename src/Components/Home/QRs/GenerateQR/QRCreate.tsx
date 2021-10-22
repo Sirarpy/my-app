@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import * as SC from '../QrStyles'
 import {useSelector} from "react-redux";
 import {getUUID} from "../../../../selector/selectors";
@@ -6,8 +6,13 @@ import {useHistory} from "react-router-dom";
 import {useTranslation} from 'react-i18next';
 import {URLToBase64} from "../../../../helpers/URLToBase64";
 import {Back} from "../../../Back/Back";
+import {useDispatch} from "react-redux";
+import {getQrLoader} from "../../../../selector/selectors";
+import {setQrLoader} from "../../../../redux/qrLoaderSlice/qrLoaderSlice";
+import CircularIndeterminate from "../../../Authentication/Loader/loader";
 
 export const QRCreate: React.FC = () => {
+    const dispatch = useDispatch()
     const {t} = useTranslation();
     const [inputValue, setInputValue] = useState<string>('');
     const [qrTitle, setQRTitle] = useState('')
@@ -17,32 +22,45 @@ export const QRCreate: React.FC = () => {
     const history = useHistory();
     const [message, setMessage] = useState('');
     const [base64, setbase64] = useState<any>('')
+    const qrLoader = useSelector(getQrLoader)
 
     const getQrTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQRTitle(e.target.value)
     }
-
     const getQR = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value)
     }
 
-    async function generateQR() {
-        let size = "500x500"
-        let data = inputValue;
-        let title = qrTitle
-        let apiUrl = "http://api.qrserver.com/v1/create-qr-code/";
-        if (data && data !== "" && title !== "") {
-            setUrl(`${apiUrl}?data=${data}&size=${size}`)
-        } else {
-            setMessage("Fill all Inputs")
-        }
-        // setQRTitle("")
-        // setInputValue("")
+    const generateQR = () => {
+        dispatch(setQrLoader(true))
+
+        setTimeout(()=>{
+            let size = "500x500"
+            let data = inputValue;
+            let title = qrTitle
+            // **************** added s ********************
+            let apiUrl = "http://api.qrserver.com/v1/create-qr-code/";
+            if (data && data !== "" && title !== "") {
+                setUrl(`${apiUrl}?data=${data}&size=${size}`)
+            } else {
+                setMessage("Fill all Inputs")
+            }
+            dispatch(setQrLoader(false))
+        }, 1000)
     }
 
-    URLToBase64(url, function (myBase64: any) {
-        setbase64(myBase64)
+    useEffect(() => {
+        URLToBase64(url, function (myBase64: any) {
+            setbase64(myBase64)
+        })
     })
+
+
+    if (qrLoader) {
+        return (
+            <CircularIndeterminate/>
+        )
+    }
 
     const saveQRs = () => {
         const userWithQR = users.map((user: any) => {
@@ -52,17 +70,16 @@ export const QRCreate: React.FC = () => {
                     qrs: [...user.qrs, {
                         title: qrTitle,
                         url: base64
-
                     }]
                 }
             } else {
                 return user
             }
         })
-
         localStorage.setItem('users', JSON.stringify(userWithQR))
         history.push('/home')
     }
+
 
     return (
         <>
@@ -81,7 +98,7 @@ export const QRCreate: React.FC = () => {
                             onChange={getQR}/>
                 <SC.QRButton value="Generate" onClick={generateQR}>{t('generateMyQR')}</SC.QRButton>
                 <SC.QRButton onClick={saveQRs}>{t('SaveQR')}</SC.QRButton>
-                <Back />
+                <Back/>
                 <p>{message}</p>
             </SC.QRContainer>
         </>

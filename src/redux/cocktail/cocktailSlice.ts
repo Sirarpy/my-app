@@ -5,9 +5,8 @@ import axios from "axios";
 const initialState: CocktailDefinedType = {
     play: false,
     drinks: {},
-    shake: false
+    shake: false,
 }
-
 
 export const CocktailSlice = createSlice({
     name: 'cocktail',

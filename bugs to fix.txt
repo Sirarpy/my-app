@@ -1,9 +1,9 @@
 *************** BUGS to fix ****************
 
-1. add back buttons                  +
-7. back use icons                    +
+0. add back buttons                  +
+1. back use icons                    +
+2. solve sound player                +
 
-2. solve sound player                -
 3. while creating qr set loader      -
 4. in host qr list is not working    -
 5. fix console errors                -
@@ -11,9 +11,5 @@
 
 
 
- // if (play && shake) {
-    //     const audioEl = document.getElementsByClassName("audio-element")[0]
-    //     if (audioEl instanceof HTMLAudioElement) {
-    //         audioEl.play().then(res => console.log(res)).catch(err => audioEl.pause())
-    //     }
-    // }
+qr i logikan berel slice
+qr sarqelu jamanak dispatch anel loadery
