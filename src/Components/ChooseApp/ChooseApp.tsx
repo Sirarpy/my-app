@@ -14,7 +14,7 @@ export const ChooseApp:React.FC = ()=>{
     return(
         <SC.Wrapper>
             <SC.ChooseAppImage src={qrGig} onClick={()=> goToCurrentPage('/login')}/>
-            <h1>VS</h1>
+            <h1>&&</h1>
             <SC.ChooseAppImage src={cocktailGig} onClick={()=> goToCurrentPage('/cocktail')}/>
         </SC.Wrapper>
     )

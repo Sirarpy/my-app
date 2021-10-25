@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import * as SC from '../QrStyles'
 import {useSelector} from "react-redux";
 import {getUUID, getQrLoader, getQrUrl} from "../../../../selector/selectors";
@@ -16,9 +16,9 @@ export const QRCreate: React.FC = () => {
     const qrLoader = useSelector(getQrLoader)
     const qrUrl = useSelector(getQrUrl)
 
+
     const [inputValue, setInputValue] = useState<string>('');
     const [qrTitle, setQRTitle] = useState('')
-    const [url, setUrl] = useState('')
     const currentUUID = useSelector(getUUID)
     const users = JSON.parse(String(localStorage.getItem('users')))
     const history = useHistory();
@@ -33,20 +33,22 @@ export const QRCreate: React.FC = () => {
     }
 
     const generateQR = () => {
-        console.log(inputValue)
-       dispatch( generateQRPromise(inputValue))
-        console.log(qrUrl)
+        dispatch(generateQRPromise(inputValue))
     }
+    // console.log(qrUrl)
 
-    if (url !== "" && url) {
-        URLToBase64(url, function (myBase64: any) {
-            setbase64(myBase64)
-        })
-    }
+    useEffect(()=>{
+        if (qrUrl !== "" && qrUrl) {
+            URLToBase64(qrUrl, function (myBase64: any) {
+                setbase64(myBase64)
+            })
+        }
+    }, [])
+
 
     const saveQRs = () => {
         const userWithQR = users.map((user: any) => {
-            if (user.uuid === currentUUID) {
+            if (user.uuid === currentUUID && base64 !== "") {
                 return {
                     ...user,
                     qrs: [...user.qrs, {
@@ -72,7 +74,7 @@ export const QRCreate: React.FC = () => {
     return (
         <>
             <SC.QRContainer>
-                <SC.Img id="image" src={url ? url : "https://images3.alphacoders.com/914/thumb-1920-914159.png"}
+                <SC.Img id="image" src={qrUrl ? qrUrl : "https://images3.alphacoders.com/914/thumb-1920-914159.png"}
                         alt="qr"/>
                 <SC.QRCreateTitle>{t('createQR')}</SC.QRCreateTitle>
                 <SC.QRInput type="text"

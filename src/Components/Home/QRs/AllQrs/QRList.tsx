@@ -22,8 +22,6 @@ export const QRList: React.FC = () => {
 
     const [newQrs, setNewQrs] = useState<any>(currentUserQrs)
 
-
-
     const openQR = () => {
         setOpen(true)
     }
@@ -40,13 +38,11 @@ export const QRList: React.FC = () => {
                 return {
                     ...user,
                     qrs: currentUserQrs
-
                 }
             } else {
                 return user
             }
         })
-        // dispatch(setUsers(userWithDeletedQR))
         localStorage.setItem('users', JSON.stringify(userWithDeletedQR))
     }
 
