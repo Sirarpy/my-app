@@ -58,7 +58,7 @@ export const QRList: React.FC = () => {
                                     <SC.QRImage src={item.url} alt="qrl" style={{width: "30px", marginRight: "10px"}}/>
                                     <SC.QRTitle>{item.title}</SC.QRTitle>
                                 </SC.QRListItem>
-                                <SC.QRListItem>
+                                <SC.QRListItem className="actions">
                                     <SC.QRListButtons onClick={openQR}>{t('preview')}</SC.QRListButtons>
                                     <SC.QRListButtons> <SC.QRDownload download={true}
                                                                       href={item.url}>download</SC.QRDownload></SC.QRListButtons>

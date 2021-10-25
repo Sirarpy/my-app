@@ -12,12 +12,25 @@ export const QRContainer = styled.div`
   flex-direction: column;
   padding: 10px;
   margin: 70px auto 0;
+  @media (max-width: 976px) {
+    width: 50vw;
+  }
+  
+  @media (max-width: 768px) {
+    width: 60vw;
+  }
+  @media (max-width: 576px) {
+    width: 80vw;
+  }
 `;
 
 
 export const QRCreateTitle = styled.h1`
   color: ${() => COLORS.blue};
   text-align: center;
+  @media (max-width: 768px) {
+    font-size: 1.5em;
+  }
 `;
 
 ///*********same in Authenticatin input***************
@@ -33,7 +46,17 @@ export const QRInput = styled.input`
   box-sizing: border-box;
   background: #2121211a;
   margin: 1vw 0;
+  @media (max-width: 976px) {
+    font-size: 1.2em;
 
+  }
+
+  @media (max-width: 768px) {
+    //width: 60vw;
+  }
+  @media (max-width: 576px) {
+    //width: 80vw;
+  }
   ::placeholder {
     color: ${() => COLORS.blue};
   }
@@ -49,8 +72,14 @@ export const QRButton = styled.button`
   margin-top: 2vw;
   color: ${() => COLORS.blue};
   //font-weight: bold;
-  font: 1.5vw bold;
+  //font: 1.5vw bold;
+  font: 1em bold;
 
+
+  @media (max-width: 976px) {
+    font: 1.2em bold;
+
+  }
   &:hover {
     background: linear-gradient(45deg, #045772, #e8e8e8);
   }
@@ -78,8 +107,16 @@ export const Box = styled.div`
 
 
 export const QRImage = styled.img`
-  width: 80%;
+  width: 60%;
   height: auto;
+  @media only screen and (max-width: 976px) {
+    width: 40%;
+
+  }
+  @media only screen and (max-width: 1200px) {
+    width: 35%;
+
+  }
 `;
 
 export const QRList = styled.div`
@@ -90,7 +127,7 @@ export const QRList = styled.div`
   width: 100%;
   margin-top: 15px;
   align-items: center;
-  flex-direction: row;
+  //flex-direction: row;
   background-color: ${() => COLORS.blue};
   @media only screen and (max-width: 1200px) {
     flex-direction: column;
@@ -99,23 +136,28 @@ export const QRList = styled.div`
 
 export const QRListItem = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  @media only screen and (max-width: 1200px) {
-    margin: 2vw auto;
+  text-align: center;
+  &.actions{
+    @media only screen and (max-width: 576px) {
+      width: 100%;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
   }
 `;
 
-export const QRTitle = styled.div`
+export const QRTitle = styled.p`
   text-transform: uppercase;
   color: ${() => COLORS.gray};
+  @media only screen and (max-width: 768px) {
+    font: 1.2em bold;
+  }
 `;
 
 export const QRListButtons = styled.div`
   color: ${() => COLORS.blue};
-  border: none;
-  outline: none;
   background-color: ${() => COLORS.gray};
   margin-left: 5px;
   text-transform: uppercase;
@@ -123,9 +165,10 @@ export const QRListButtons = styled.div`
   padding: 10px;
   cursor: pointer;
   box-sizing: border-box;
-  display: block;
   border-radius: 5px;
-
+  @media only screen and (max-width: 576px) {
+    width: 100%;
+  }
   &:hover {
     opacity: .5;
   }

@@ -25,8 +25,9 @@ export const QrLoaderSlice = createSlice({
 })
 
 export const generateQRPromise = (inputValue: string) => (dispatch: any) => {
+    dispatch(setQrLoader(true))
+
     return new Promise((resolve, reject) => {
-        dispatch(setQrLoader(true))
 
         let size = "500x500";
         let dataValue = inputValue;
@@ -40,6 +41,8 @@ export const generateQRPromise = (inputValue: string) => (dispatch: any) => {
         dispatch(setQrLoader(false))
 
     })
+    // eslint-disable-next-line no-unreachable
+
 
 }
 

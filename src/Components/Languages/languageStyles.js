@@ -4,7 +4,7 @@ import {COLORS} from "../../constants";
 export const LanguageContainer = styled.div`
   width: 100%;
   margin: 0 auto;
-  padding: 15px 100px;
+  padding: 1vw 2vw;
   box-sizing: border-box;
   background: ${() => COLORS.blue} ;
 `;
@@ -15,4 +15,12 @@ export const LanguageImage = styled.img`
   height: 40px;
   margin-right: 10px;
   cursor: pointer;
+  //@media (max-width: 768px) {
+  //  margin-right: 10px;
+  //
+  //
+  //}
+  //@media (max-width: 576px) {
+  //  width: 40%;
+  //}
 `;

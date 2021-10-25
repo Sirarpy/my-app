@@ -3,20 +3,25 @@ import {COLORS} from "../../constants";
 
 export const HomeContainer = styled.div`
   width: 80%;
-  margin: 100px auto;
+  margin: 15% auto 0;
 `;
 export const HomeContent = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  //margin-top: 100px;
+
+  @media (max-width: 768px) {
+   flex-direction: column;
+  }
 `;
 
 export const BubbleContainer = styled.div`
   width: 250px;
   height: 250px;
   position: relative;
+  @media (max-width: 768px) {
+    margin-bottom: 15px;
+  }
 `;
 export const Bubble = styled.div`
   content: "";

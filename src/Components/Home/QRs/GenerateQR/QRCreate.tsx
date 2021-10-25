@@ -16,7 +16,6 @@ export const QRCreate: React.FC = () => {
     const qrLoader = useSelector(getQrLoader)
     const qrUrl = useSelector(getQrUrl)
 
-
     const [inputValue, setInputValue] = useState<string>('');
     const [qrTitle, setQRTitle] = useState('')
     const currentUUID = useSelector(getUUID)
@@ -24,6 +23,8 @@ export const QRCreate: React.FC = () => {
     const history = useHistory();
     const [message, setMessage] = useState('');
     const [base64, setbase64] = useState<any>('')
+    const [imageUrl, setImageUrl] = useState<string>('')
+    // const [imageUrl, setImageUrl] = useState<string>(qrUrl)
 
     const getQrTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQRTitle(e.target.value)
@@ -32,19 +33,22 @@ export const QRCreate: React.FC = () => {
         setInputValue(e.target.value)
     }
 
-    const generateQR = () => {
-        dispatch(generateQRPromise(inputValue))
-    }
-    // console.log(qrUrl)
-
-    useEffect(()=>{
+    useEffect(() => {
         if (qrUrl !== "" && qrUrl) {
             URLToBase64(qrUrl, function (myBase64: any) {
                 setbase64(myBase64)
             })
         }
-    }, [])
+    }, [ qrUrl])
 
+    const generateQR = () => {
+        if (inputValue!=="" && qrTitle !==""){
+            dispatch(generateQRPromise(inputValue))
+        } else{
+            setMessage("Please fill all inputs")
+        }
+        setImageUrl(qrUrl)
+    }
 
     const saveQRs = () => {
         const userWithQR = users.map((user: any) => {
@@ -60,10 +64,11 @@ export const QRCreate: React.FC = () => {
                 return user
             }
         })
+
         localStorage.setItem('users', JSON.stringify(userWithQR))
+        setImageUrl('')
         history.push('/home')
     }
-
 
     if (qrLoader) {
         return (
@@ -74,7 +79,7 @@ export const QRCreate: React.FC = () => {
     return (
         <>
             <SC.QRContainer>
-                <SC.Img id="image" src={qrUrl ? qrUrl : "https://images3.alphacoders.com/914/thumb-1920-914159.png"}
+                <SC.Img id="image" src={imageUrl ? imageUrl : "https://images3.alphacoders.com/914/thumb-1920-914159.png"}
                         alt="qr"/>
                 <SC.QRCreateTitle>{t('createQR')}</SC.QRCreateTitle>
                 <SC.QRInput type="text"
@@ -92,6 +97,5 @@ export const QRCreate: React.FC = () => {
                 <p>{message}</p>
             </SC.QRContainer>
         </>
-
     )
 }

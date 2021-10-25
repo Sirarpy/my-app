@@ -2,10 +2,10 @@ import styled from "styled-components";
 import {COLORS} from "../../constants";
 
 export const Container = styled.div`
-  width: 40vw;
+  width: 40%;
   border-radius: 0 0 10px 10px;
   box-sizing: border-box;
-  margin: 250px auto 0;
+  margin: 30% auto 0;
   position: relative;
   background-color: ${() => COLORS.blue};
   padding: 10px;
@@ -19,6 +19,21 @@ export const Container = styled.div`
     position: absolute;
     top: -14vw;
     width: 0;
+    //border-bottom: 1px solid gray;
+    @media (max-width: 768px) {
+      border-left: 30vw solid transparent;
+      border-right: 30vw solid transparent;
+    }
+    @media (max-width: 576px) {
+      border-left: 40vw solid transparent;
+      border-right: 40vw solid transparent;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 60%;
+  }
+  @media (max-width: 576px) {
+    width: 80%;
   }
 `;
 
