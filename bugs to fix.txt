@@ -1,15 +1,7 @@
 *************** BUGS to fix ****************
 
-0. add back buttons                  +
-1. back use icons                    +
-2. solve sound player                +
-
-3. while creating qr set loader      -
-4. in host qr list is not working    -
-5. fix console errors                -
-6. pagination in qr list             -
-
-
-
-qr i logikan berel slice
-qr sarqelu jamanak dispatch anel loadery
+1. delete immediately                +
+2. loader while creating qr          -
+3. back  button history              -
+4. while creating qr set loader      -
+5. pagination in qr list             -

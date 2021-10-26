@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import * as SC from '../QrStyles'
 import {getUUID} from "../../../../selector/selectors";
 import {useSelector} from "react-redux";
@@ -20,7 +20,11 @@ export const QRList: React.FC = () => {
     const currentUser = users.filter((currentUser: UserType) => currentUser.uuid === currentUUID)
     const currentUserQrs = _.get(currentUser[0], 'qrs')
 
-    const [newQrs, setNewQrs] = useState<any>(currentUserQrs)
+    const [newQrs, setNewQrs] = useState<any>([])
+    //
+    useEffect(()=>{
+        setNewQrs(currentUserQrs)
+    }, [])
 
     const openQR = () => {
         setOpen(true)
@@ -33,8 +37,10 @@ export const QRList: React.FC = () => {
     const deleteQR = (key: number) => {
         const userWithDeletedQR = users.map((user: any) => {
             if (user.uuid === currentUUID) {
+                console.log("expected value",currentUserQrs)
                 currentUserQrs.splice(key, 1)
                 setNewQrs(currentUserQrs)
+                // console.log("returned value",newQrs)
                 return {
                     ...user,
                     qrs: currentUserQrs
@@ -43,8 +49,12 @@ export const QRList: React.FC = () => {
                 return user
             }
         })
+        // setNewQrs(currentUserQrs)
         localStorage.setItem('users', JSON.stringify(userWithDeletedQR))
     }
+    // console.log("after",currentUserQrs)
+
+    // console.log("new-qrs",newQrs)
 
     return (
         <SC.QRContainer>
