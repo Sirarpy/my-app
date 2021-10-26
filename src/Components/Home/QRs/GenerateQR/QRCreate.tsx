@@ -16,14 +16,13 @@ export const QRCreate: React.FC = () => {
     const {t} = useTranslation();
     const qrLoader = useSelector(getQrLoader)
     const qrUrl = useSelector(getQrUrl)
-
     const [inputValue, setInputValue] = useState<string>('');
     const [qrTitle, setQRTitle] = useState('')
     const currentUUID = useSelector(getUUID)
     const users = JSON.parse(String(localStorage.getItem('users')))
     const history = useHistory();
     const [message, setMessage] = useState('');
-    const [base64, setbase64] = useState<any>('')
+    const [base64, setBase64] = useState<any>('')
     const [imageUrl, setImageUrl] = useState<string>('')
 
     const getQrTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,11 +36,10 @@ export const QRCreate: React.FC = () => {
     useEffect(() => {
         if (qrUrl !== "" && qrUrl) {
             URLToBase64(qrUrl, function (myBase64: any) {
-                setbase64(myBase64)
+                setBase64(myBase64)
             })
             // setImageUrl(qrUrl)
             setImageUrl(base64)
-
         }
 
     }, [qrUrl])
@@ -50,34 +48,40 @@ export const QRCreate: React.FC = () => {
     const generateQR = () => {
         if (inputValue !== "" && qrTitle !== "") {
             dispatch(generateQRPromise(inputValue))
-            // setImageUrl(qrUrl)
-            // console.log("onClick", qrUrl)
         } else {
             setMessage("Please fill all inputs")
         }
     }
 
     const saveQRs = () => {
-
         console.log("base64", base64)
-        const userWithQR = users.map((user: any) => {
-            if (user.uuid === currentUUID && base64 !== "") {
-                return {
-                    ...user,
-                    qrs: [...user.qrs, {
-                        title: qrTitle,
-                        url: base64
-                    }]
+        // console.log("iimage url ", imageUrl)
+        if (base64 !== "" && base64 && imageUrl !== base64){
+            const userWithQR = users.map((user: any) => {
+                if (user.uuid === currentUUID ) {
+                    return {
+                        ...user,
+                        qrs: [...user.qrs, {
+                            title: qrTitle,
+                            url: base64
+                        }]
+                    }
+                } else {
+                    return user
                 }
-            } else {
-                return user
-            }
-        })
-        localStorage.setItem('users', JSON.stringify(userWithQR))
+            })
+            localStorage.setItem('users', JSON.stringify(userWithQR))
+            setImageUrl("")
+            setBase64("")
+        }
+        // setBase64("")
+        // setImageUrl("")
+
         history.push('/home')
-        setImageUrl(" ")
     }
-    console.log("verjin ", imageUrl)
+
+    console.log("nkar ", imageUrl)
+    console.log("verjin 64 ", base64)
 
     if (qrLoader) {
         return (
