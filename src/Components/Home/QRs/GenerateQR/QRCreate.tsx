@@ -34,27 +34,32 @@ export const QRCreate: React.FC = () => {
     }
 
 
-    // useEffect(() => {
-    //     if (qrUrl !== "" && qrUrl) {
-    //         URLToBase64(qrUrl, function (myBase64: any) {
-    //             setbase64(myBase64)
-    //             setImageUrl(qrUrl)
-    //         })
-    //     }
-    // }, [])
+    useEffect(() => {
+        if (qrUrl !== "" && qrUrl) {
+            URLToBase64(qrUrl, function (myBase64: any) {
+                setbase64(myBase64)
+            })
+            // setImageUrl(qrUrl)
+            setImageUrl(base64)
 
+        }
+
+    }, [qrUrl])
 
 
     const generateQR = () => {
         if (inputValue !== "" && qrTitle !== "") {
             dispatch(generateQRPromise(inputValue))
-            console.log("onClick", qrUrl)
+            // setImageUrl(qrUrl)
+            // console.log("onClick", qrUrl)
         } else {
             setMessage("Please fill all inputs")
         }
     }
 
     const saveQRs = () => {
+
+        console.log("base64", base64)
         const userWithQR = users.map((user: any) => {
             if (user.uuid === currentUUID && base64 !== "") {
                 return {
@@ -68,10 +73,11 @@ export const QRCreate: React.FC = () => {
                 return user
             }
         })
-        setImageUrl('')
         localStorage.setItem('users', JSON.stringify(userWithQR))
         history.push('/home')
+        setImageUrl(" ")
     }
+    console.log("verjin ", imageUrl)
 
     if (qrLoader) {
         return (
