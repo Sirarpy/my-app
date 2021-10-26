@@ -6,7 +6,6 @@ export const QRContainer = styled.div`
   border: 1px solid ${() => COLORS.blue};
   border-radius: 10px;
   box-sizing: border-box;
-  //margin: 7rem auto;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -33,7 +32,6 @@ export const QRCreateTitle = styled.h1`
   }
 `;
 
-///*********same in Authenticatin input***************
 export const QRInput = styled.input`
   width: 100%;
   display: block;
@@ -50,12 +48,9 @@ export const QRInput = styled.input`
     font-size: 1.2em;
 
   }
-
   @media (max-width: 768px) {
-    //width: 60vw;
   }
   @media (max-width: 576px) {
-    //width: 80vw;
   }
   ::placeholder {
     color: ${() => COLORS.blue};
@@ -71,10 +66,7 @@ export const QRButton = styled.button`
   width: 100%;
   margin-top: 2vw;
   color: ${() => COLORS.blue};
-  //font-weight: bold;
-  //font: 1.5vw bold;
   font: 1em bold;
-
 
   @media (max-width: 976px) {
     font: 1.2em bold;

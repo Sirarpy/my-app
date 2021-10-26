@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Back = styled.p`
+export const Back = styled.button`
   font-size: 16px;
   padding: 10px 15px;
   //background: linear-gradient(11deg, #07181d, #39b7dd);

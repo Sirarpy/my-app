@@ -46,7 +46,9 @@ export const SignUpLayout: React.FC = () => {
             <CircularIndeterminate/>
         )
     }
-
+    const goToCurrentPage = (currentTargetRout: string) => {
+        history.push(currentTargetRout)
+    }
     return (
         <SC.Container>
             <SC.AuthTitle>{t('signUp')}</SC.AuthTitle>
@@ -54,7 +56,7 @@ export const SignUpLayout: React.FC = () => {
             <SC.Button onClick={generateUUID}>
                 {t('getUU')}
             </SC.Button>
-            <Back />
+            <Back onClick={() => goToCurrentPage('/login')}/>
             <Modal
                 open={open}
                 aria-labelledby="parent-modal-title"

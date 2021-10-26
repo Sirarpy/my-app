@@ -6,7 +6,7 @@ import _ from "lodash";
 import Modal from '@mui/material/Modal';
 import {useTranslation} from 'react-i18next';
 import {Back} from "../../../Back/Back";
-
+import {useHistory} from "react-router-dom";
 interface UserType {
     uuid: string
     qrs: any
@@ -19,7 +19,7 @@ export const QRList: React.FC = () => {
     const users = JSON.parse(String(localStorage.getItem('users')))
     const currentUser = users.filter((currentUser: UserType) => currentUser.uuid === currentUUID)
     const currentUserQrs = _.get(currentUser[0], 'qrs')
-
+    const history = useHistory()
     const [newQrs, setNewQrs] = useState<any>([])
     //
     useEffect(()=>{
@@ -49,12 +49,12 @@ export const QRList: React.FC = () => {
                 return user
             }
         })
-        // setNewQrs(currentUserQrs)
         localStorage.setItem('users', JSON.stringify(userWithDeletedQR))
     }
-    // console.log("after",currentUserQrs)
+    const goToCurrentPage = (currentTargetRout: string) => {
+        history.push(currentTargetRout)
+    }
 
-    // console.log("new-qrs",newQrs)
 
     return (
         <SC.QRContainer>
@@ -88,7 +88,7 @@ export const QRList: React.FC = () => {
                         )
                     }) : false
             }
-            <Back />
+            <Back onClick={() => goToCurrentPage('/home')} />
         </SC.QRContainer>
     )
 }

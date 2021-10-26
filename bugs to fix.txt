@@ -1,7 +1,6 @@
 *************** BUGS to fix ****************
 
-1. delete immediately                +
+1. qr create double click            -
 2. loader while creating qr          -
-3. back  button history              -
-4. while creating qr set loader      -
-5. pagination in qr list             -
+3. while creating qr set loader      -
+4. pagination in qr list             -

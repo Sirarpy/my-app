@@ -17,8 +17,6 @@ import {Languages} from "../Languages/Languages";
 import {CocktailBanner} from "../Cocktail/CocktailBanner";
 import {CocktailDescription} from "../Cocktail/CocktailDescription";
 import {ChooseApp} from "../ChooseApp/ChooseApp";
-
-
 export const MainLayout: React.FC = () => {
 
     const loginStatus = useSelector(getLoginUser)
@@ -26,7 +24,7 @@ export const MainLayout: React.FC = () => {
     return (
         <div>
             <GlobalStyle/>
-            <Router>
+            <Router >
                 <Switch>
                     <Route path="/" exact component={ChooseApp}/>
                     <Route path="/cocktail" component={CocktailBanner}/>

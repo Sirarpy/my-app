@@ -3,14 +3,18 @@ import {useSelector} from "react-redux";
 import {getDrinks} from "../../selector/selectors";
 import * as SC from './cocktailStyle/cocktail'
 import {Back} from "../Back/Back";
-
+import {useHistory} from "react-router-dom";
 interface Key {
     [key: string]: string;
 }
 
 export const CocktailDescription: React.FC = () => {
-
+    const history = useHistory()
     const getCurrentDrink: Key = useSelector(getDrinks)
+
+    const goToCurrentPage = (currentTargetRout: string) => {
+        history.push(currentTargetRout)
+    }
 
     return (
         <SC.CurrentDrinkBG>
@@ -33,7 +37,7 @@ export const CocktailDescription: React.FC = () => {
                             <SC.Paragraph><SC.Span> modified: </SC.Span> {getCurrentDrink.dateModified && getCurrentDrink.dateModified.split(" ", 1)}
                             </SC.Paragraph>
                         </SC.CurrentDrinkItem>
-                        <Back/>
+                        <Back onClick={() => goToCurrentPage('/cocktail')}/>
                     </SC.CurrentDrinkBanner>
                     : false
             }

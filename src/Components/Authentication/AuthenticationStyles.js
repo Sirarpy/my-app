@@ -2,35 +2,40 @@ import styled from "styled-components";
 import {COLORS} from "../../constants";
 
 export const Container = styled.div`
-  width: 40%;
+  width: 30%;
   border-radius: 0 0 10px 10px;
   box-sizing: border-box;
-  margin: 30% auto 0;
+  margin: 15% auto 0;
   position: relative;
   background-color: ${() => COLORS.blue};
   padding: 10px;
+  z-index: 9;
+  border-top: 1px solid #3694b1;
   &:before {
-    border-bottom: 14vw solid rgb(57 183 221);
-    border-left: 20vw solid transparent;
-    border-right: 20vw solid transparent;
+    border-bottom: 10vw solid rgb(57 183 221);
+    border-left: 15vw solid transparent;
+    border-right: 15vw solid transparent;
     content: "";
     height: 0;
     left: 0;
     position: absolute;
-    top: -14vw;
+    top: -10.06vw;
     width: 0;
-    //border-bottom: 1px solid gray;
     @media (max-width: 768px) {
+      border-bottom: 15vw solid rgb(57 183 221);
       border-left: 30vw solid transparent;
       border-right: 30vw solid transparent;
+      top: -15.06vw;
     }
     @media (max-width: 576px) {
       border-left: 40vw solid transparent;
       border-right: 40vw solid transparent;
+      top: -15.2vw;
     }
   }
   @media (max-width: 768px) {
     width: 60%;
+    margin-top: 20%;
   }
   @media (max-width: 576px) {
     width: 80%;

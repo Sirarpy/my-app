@@ -48,7 +48,7 @@ export const LogInLayout: React.FC = () => {
                     {t('loginStart')}
                 </SC.Link>
             </SC.Button>
-            <Back />
+            <Back onClick={() => goToCurrentPage('/')}   />
             <SC.Span onClick={() => goToCurrentPage('/signup')}>
                 {t('noUUid')}
             </SC.Span>

@@ -7,7 +7,6 @@ import '../home.css'
 
 export const GenerateQr: React.FC = () => {
     const {t} = useTranslation()
-
     const history = useHistory();
     return (
         <SC.BubbleContainer>

@@ -9,7 +9,7 @@ import {getUUID} from "../../selector/selectors";
 import _ from "lodash";
 import {useTranslation} from 'react-i18next';
 import {Back} from "../Back/Back";
-
+import {useHistory} from "react-router-dom";
 
 interface AvatarType {
     avatar: string
@@ -21,7 +21,8 @@ export const Home: React.FC = () => {
     const [avatar, setAvatar] = useState("")
     const currentUUID = useSelector(getUUID)
     const storageData = JSON.parse(String(localStorage.getItem('users')))
-
+    const history =useHistory()
+    
     useEffect(() => {
         const isAvatarExist = storageData.filter((item: AvatarType) => item.uuid === currentUUID)
         const avatarExists = _.get(isAvatarExist[0], 'avatar')
@@ -47,6 +48,9 @@ export const Home: React.FC = () => {
             })
         })
     }
+    const goToCurrentPage = (currentTargetRout: string) => {
+        history.push(currentTargetRout)
+    }
     return (
         <SC.HomeContainer>
             <SC.HomeTitle>{t('home')}</SC.HomeTitle>
@@ -55,7 +59,7 @@ export const Home: React.FC = () => {
                 <SeeAllQrs/>
                 <GenerateQr/>
             </SC.HomeContent>
-            <Back />
+            <Back onClick={() => goToCurrentPage('/login')} />
         </SC.HomeContainer>
     )
 }

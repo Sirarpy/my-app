@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux";
 import CircularIndeterminate from "../../../Authentication/Loader/loader";
 import {generateQRPromise} from "../../../../redux/qrLoaderSlice/qrLoaderSlice";
 
+
 export const QRCreate: React.FC = () => {
     const dispatch = useDispatch()
     const {t} = useTranslation();
@@ -64,7 +65,6 @@ export const QRCreate: React.FC = () => {
                 return user
             }
         })
-
         localStorage.setItem('users', JSON.stringify(userWithQR))
         setImageUrl('')
         history.push('/home')
@@ -74,6 +74,10 @@ export const QRCreate: React.FC = () => {
         return (
             <CircularIndeterminate/>
         )
+    }
+
+    const goToCurrentPage = (currentTargetRout: string) => {
+        history.push(currentTargetRout)
     }
 
     return (
@@ -93,7 +97,7 @@ export const QRCreate: React.FC = () => {
                             onChange={getQR}/>
                 <SC.QRButton value="Generate" onClick={generateQR}>{t('generateMyQR')}</SC.QRButton>
                 <SC.QRButton onClick={saveQRs}>{t('SaveQR')}</SC.QRButton>
-                <Back/>
+                <Back onClick={() => goToCurrentPage('/home')} />
                 <p>{message}</p>
             </SC.QRContainer>
         </>

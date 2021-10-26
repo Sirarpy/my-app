@@ -28,6 +28,9 @@ export const CocktailBanner: React.FC = () => {
             audioEl.play().then(res => res).catch(err => audioEl.pause())
         }
     }
+    const goToCurrentPage = (currentTargetRout: string) => {
+        history.push(currentTargetRout)
+    }
 
     return (
         <SC.CocktailBG id="box">
@@ -35,7 +38,7 @@ export const CocktailBanner: React.FC = () => {
             <audio className='audio-element' >
                 <source src={soundFile}/>
             </audio>
-            <Back/>
+            <Back onClick={() => goToCurrentPage('/')}/>
         </SC.CocktailBG>
     )
 }
