@@ -25,7 +25,6 @@ export const QRCreate: React.FC = () => {
     const [message, setMessage] = useState('');
     const [base64, setbase64] = useState<any>('')
     const [imageUrl, setImageUrl] = useState<string>('')
-    // const [imageUrl, setImageUrl] = useState<string>(qrUrl)
 
     const getQrTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQRTitle(e.target.value)
@@ -40,7 +39,11 @@ export const QRCreate: React.FC = () => {
                 setbase64(myBase64)
             })
         }
-    }, [ qrUrl])
+        setImageUrl(qrUrl)
+    }, [qrUrl])
+
+    console.log("qrUrl",qrUrl)
+    console.log("base64",base64)
 
     const generateQR = () => {
         if (inputValue!=="" && qrTitle !==""){
@@ -48,7 +51,6 @@ export const QRCreate: React.FC = () => {
         } else{
             setMessage("Please fill all inputs")
         }
-        setImageUrl(qrUrl)
     }
 
     const saveQRs = () => {

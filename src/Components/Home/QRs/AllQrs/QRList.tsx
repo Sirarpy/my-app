@@ -37,10 +37,8 @@ export const QRList: React.FC = () => {
     const deleteQR = (key: number) => {
         const userWithDeletedQR = users.map((user: any) => {
             if (user.uuid === currentUUID) {
-                console.log("expected value",currentUserQrs)
                 currentUserQrs.splice(key, 1)
                 setNewQrs(currentUserQrs)
-                // console.log("returned value",newQrs)
                 return {
                     ...user,
                     qrs: currentUserQrs
