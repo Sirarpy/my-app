@@ -33,22 +33,23 @@ export const QRCreate: React.FC = () => {
         setInputValue(e.target.value)
     }
 
-    useEffect(() => {
-        if (qrUrl !== "" && qrUrl) {
-            URLToBase64(qrUrl, function (myBase64: any) {
-                setbase64(myBase64)
-            })
-        }
-        setImageUrl(qrUrl)
-    }, [qrUrl])
 
-    console.log("qrUrl",qrUrl)
-    console.log("base64",base64)
+    // useEffect(() => {
+    //     if (qrUrl !== "" && qrUrl) {
+    //         URLToBase64(qrUrl, function (myBase64: any) {
+    //             setbase64(myBase64)
+    //             setImageUrl(qrUrl)
+    //         })
+    //     }
+    // }, [])
+
+
 
     const generateQR = () => {
-        if (inputValue!=="" && qrTitle !==""){
+        if (inputValue !== "" && qrTitle !== "") {
             dispatch(generateQRPromise(inputValue))
-        } else{
+            console.log("onClick", qrUrl)
+        } else {
             setMessage("Please fill all inputs")
         }
     }
@@ -67,8 +68,8 @@ export const QRCreate: React.FC = () => {
                 return user
             }
         })
-        localStorage.setItem('users', JSON.stringify(userWithQR))
         setImageUrl('')
+        localStorage.setItem('users', JSON.stringify(userWithQR))
         history.push('/home')
     }
 
@@ -85,7 +86,8 @@ export const QRCreate: React.FC = () => {
     return (
         <>
             <SC.QRContainer>
-                <SC.Img id="image" src={imageUrl ? imageUrl : "https://images3.alphacoders.com/914/thumb-1920-914159.png"}
+                <SC.Img id="image"
+                        src={imageUrl ? imageUrl : "https://images3.alphacoders.com/914/thumb-1920-914159.png"}
                         alt="qr"/>
                 <SC.QRCreateTitle>{t('createQR')}</SC.QRCreateTitle>
                 <SC.QRInput type="text"
@@ -99,7 +101,7 @@ export const QRCreate: React.FC = () => {
                             onChange={getQR}/>
                 <SC.QRButton value="Generate" onClick={generateQR}>{t('generateMyQR')}</SC.QRButton>
                 <SC.QRButton onClick={saveQRs}>{t('SaveQR')}</SC.QRButton>
-                <Back onClick={() => goToCurrentPage('/home')} />
+                <Back onClick={() => goToCurrentPage('/home')}/>
                 <p>{message}</p>
             </SC.QRContainer>
         </>
