@@ -8,7 +8,7 @@ export const Back = styled.button`
   color: rgb(57 183 221);
   cursor: pointer;
   text-transform: uppercase;
-  width: 20%;
+  width: 30%;
   margin: 10px auto;
   display: flex;
   justify-content: center;
@@ -18,11 +18,11 @@ export const Back = styled.button`
     color: rgb(0,0,0,.87);
   }
   @media (max-width: 768px) {
-    width: 30%;
+    width: 40%;
 
   }
   @media (max-width: 576px) {
-    width: 40%;
+    width: 50%;
   }
 `;
 

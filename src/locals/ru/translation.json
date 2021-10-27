@@ -4,12 +4,14 @@
   "loginStart": "Давайте начнем",
   "signup": "Регистрация",
   "noUUid": "Нет кода UUID",
-  "message": "Your UUID is not valid!",
+  "messageUUID": "Ваш UUID недействителен!",
   "signUp": "Регистрация",
   "getUU": "Получить свой код UUID",
   "enterEmail": "Ввод электронной почты",
   "loaderText": "Вы успешно сгенерировали уникальный ID. Проверьте свою электронную почту.",
-  "Please enter a valid email!": "Please enter a valid email!",
+  "validEmail": "Пожалуйста, введите действительный адрес электронной почты!",
+  "fillInput" : "Пожалуйста, заполните все поля",
+  "saveMessage" : "Нечего сохранить",
   "home": "главный",
   "createQR": "Создать QR код",
   "qrInput": "ввод QR",
@@ -21,5 +23,6 @@
   "preview": "просмотр",
   "qrTitle": "QR название",
   "delete" : "удалять",
-  "back" : "назад"
+  "back" : "Назад",
+  "download" : "скачать"
 }

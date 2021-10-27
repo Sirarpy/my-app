@@ -15,7 +15,7 @@ interface UserType {
 export const LogInLayout: React.FC = () => {
     const dispatch = useDispatch()
     const [uuid, setUuid] = useState<string>('')
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState([]);
     const history = useHistory();
     const users = JSON.parse(String(localStorage.getItem('users')))
     const {t} = useTranslation();
@@ -31,7 +31,7 @@ export const LogInLayout: React.FC = () => {
             dispatch(setLogin(true))
             history.push('/home')
         } else {
-            setMessage('Your UUID is not valid!');
+            setMessage(t('messageUUID'));
         }
     }
 

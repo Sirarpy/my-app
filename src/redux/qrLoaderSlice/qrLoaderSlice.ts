@@ -27,16 +27,18 @@ export const QrLoaderSlice = createSlice({
 
 export const generateQRPromise = (inputValue: string) => (dispatch: any) => {
     dispatch(setQrLoader(true))
+
     let size = "500x500";
     let apiUrl = "https://api.qrserver.com/v1/create-qr-code/";
 
-        axios.get(`${apiUrl}?data=${inputValue}&size=${size}`)
-            .then((res) => {
-                dispatch(setQR(res.config.url))
-                dispatch(setQrLoader(false))
-            })
-
+    axios.get(`${apiUrl}?data=${inputValue}&size=${size}`)
+        .then((res) => {
+            dispatch(setQR(res.config.url))
+            dispatch(setQrLoader(false))
+        })
+        .finally(() => dispatch(setQR('')))
 }
 
-export const {setQrLoader, setQR} = QrLoaderSlice.actions
+
+export const {setQrLoader, setQR,} = QrLoaderSlice.actions
 export default QrLoaderSlice.reducer

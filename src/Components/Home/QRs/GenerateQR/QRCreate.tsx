@@ -10,7 +10,6 @@ import {useDispatch} from "react-redux";
 import CircularIndeterminate from "../../../Authentication/Loader/loader";
 import {generateQRPromise} from "../../../../redux/qrLoaderSlice/qrLoaderSlice";
 
-
 export const QRCreate: React.FC = () => {
     const dispatch = useDispatch()
     const {t} = useTranslation();
@@ -21,9 +20,8 @@ export const QRCreate: React.FC = () => {
     const currentUUID = useSelector(getUUID)
     const users = JSON.parse(String(localStorage.getItem('users')))
     const history = useHistory();
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState([]);
     const [base64, setBase64] = useState<any>('')
-    const [imageUrl, setImageUrl] = useState<string>('')
 
     const getQrTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQRTitle(e.target.value)
@@ -32,33 +30,27 @@ export const QRCreate: React.FC = () => {
         setInputValue(e.target.value)
     }
 
-
     useEffect(() => {
         if (qrUrl !== "" && qrUrl) {
-            URLToBase64(qrUrl, function (myBase64: any) {
+            URLToBase64(qrUrl, function (myBase64: string) {
                 setBase64(myBase64)
             })
-            // setImageUrl(qrUrl)
-            setImageUrl(base64)
         }
-
+        setMessage([])
     }, [qrUrl])
-
 
     const generateQR = () => {
         if (inputValue !== "" && qrTitle !== "") {
             dispatch(generateQRPromise(inputValue))
         } else {
-            setMessage("Please fill all inputs")
+            setMessage(t('fillInput'))
         }
     }
 
     const saveQRs = () => {
-        console.log("base64", base64)
-        // console.log("iimage url ", imageUrl)
-        if (base64 !== "" && base64 && imageUrl !== base64){
+        if (base64 !== "") {
             const userWithQR = users.map((user: any) => {
-                if (user.uuid === currentUUID ) {
+                if (user.uuid === currentUUID) {
                     return {
                         ...user,
                         qrs: [...user.qrs, {
@@ -71,17 +63,11 @@ export const QRCreate: React.FC = () => {
                 }
             })
             localStorage.setItem('users', JSON.stringify(userWithQR))
-            setImageUrl("")
-            setBase64("")
+            history.push('/home')
+        } else {
+            setMessage(t('saveMessage'))
         }
-        // setBase64("")
-        // setImageUrl("")
-
-        history.push('/home')
     }
-
-    console.log("nkar ", imageUrl)
-    console.log("verjin 64 ", base64)
 
     if (qrLoader) {
         return (
@@ -97,7 +83,7 @@ export const QRCreate: React.FC = () => {
         <>
             <SC.QRContainer>
                 <SC.Img id="image"
-                        src={imageUrl ? imageUrl : "https://images3.alphacoders.com/914/thumb-1920-914159.png"}
+                        src={base64 ? base64 : "https://images3.alphacoders.com/914/thumb-1920-914159.png"}
                         alt="qr"/>
                 <SC.QRCreateTitle>{t('createQR')}</SC.QRCreateTitle>
                 <SC.QRInput type="text"

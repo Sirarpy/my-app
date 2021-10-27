@@ -7,6 +7,7 @@ import Modal from '@mui/material/Modal';
 import {useTranslation} from 'react-i18next';
 import {Back} from "../../../Back/Back";
 import {useHistory} from "react-router-dom";
+
 interface UserType {
     uuid: string
     qrs: any
@@ -21,8 +22,8 @@ export const QRList: React.FC = () => {
     const currentUserQrs = _.get(currentUser[0], 'qrs')
     const history = useHistory()
     const [newQrs, setNewQrs] = useState<any>([])
-    //
-    useEffect(()=>{
+
+    useEffect(() => {
         setNewQrs(currentUserQrs)
     }, [])
 
@@ -49,10 +50,10 @@ export const QRList: React.FC = () => {
         })
         localStorage.setItem('users', JSON.stringify(userWithDeletedQR))
     }
+
     const goToCurrentPage = (currentTargetRout: string) => {
         history.push(currentTargetRout)
     }
-
 
     return (
         <SC.QRContainer>
@@ -69,7 +70,7 @@ export const QRList: React.FC = () => {
                                 <SC.QRListItem className="actions">
                                     <SC.QRListButtons onClick={openQR}>{t('preview')}</SC.QRListButtons>
                                     <SC.QRListButtons> <SC.QRDownload download={true}
-                                                                      href={item.url}>download</SC.QRDownload></SC.QRListButtons>
+                                                                      href={item.url}>{t('download')}</SC.QRDownload></SC.QRListButtons>
                                     <SC.QRListButtons onClick={() => deleteQR(key)}>{t('delete')}</SC.QRListButtons>
                                 </SC.QRListItem>
                                 <Modal
@@ -86,7 +87,17 @@ export const QRList: React.FC = () => {
                         )
                     }) : false
             }
-            <Back onClick={() => goToCurrentPage('/home')} />
+
+            {/*<ReactPaginate*/}
+            {/*    previousLabel={'prev'}*/}
+            {/*    nextLabel={'next'}*/}
+            {/*    pageCount={pages}*/}
+            {/*    onPageChange={this.handlePageClick}*/}
+            {/*    containerClassName={'pagination'}*/}
+            {/*    activeClassName={'active'}*/}
+            {/*/>*/}
+
+            <Back onClick={() => goToCurrentPage('/home')}/>
         </SC.QRContainer>
     )
 }

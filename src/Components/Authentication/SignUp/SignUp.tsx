@@ -16,7 +16,7 @@ export const SignUpLayout: React.FC = () => {
     const dispatch = useDispatch()
     const [email, setEmail] = useState<string>("")
     const [open, setOpen] = React.useState(false);
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState([]);
     const history = useHistory()
     const loading = useSelector(getLoader)
 
@@ -30,7 +30,7 @@ export const SignUpLayout: React.FC = () => {
             dispatch(sendEmail(uuidv4()))
             setOpen(true);
         } else {
-            setMessage('Please enter a valid email!');
+            setMessage(t('validEmail'));
         }
     }
 

@@ -1,3 +1,10 @@
 *************** BUGS to fix ****************
-1. send mail              -
-4. pagination in qr list  -
+
+- send mail
+- pagination in qr list
+- files path
+- back automation
+
+    // useEffect(() =>  () => {
+    //     dispatch(setQR(''))
+    // },[])

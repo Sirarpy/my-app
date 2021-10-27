@@ -2,6 +2,7 @@ import React from "react";
 import * as SC from '../../HomeStyles'
 import {useHistory} from 'react-router-dom'
 import {useTranslation} from 'react-i18next';
+import ReactPaginate from 'react-paginate';
 
 export const SeeAllQrs: React.FC = () => {
     const history = useHistory();

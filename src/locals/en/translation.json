@@ -4,12 +4,14 @@
   "loginStart": "Let's start",
   "signup": "Sign up",
   "noUUid": "Has no UUID code",
-  "message": "Your UUID is not valid!",
+  "messageUUID": "Your UUID is not valid!",
   "signUp": "Sign Up",
   "getUU": " Get your UUID Code",
   "enterEmail": "Enter Email",
   "loaderText": "You successfully generate unique ID. Check your email",
-  "Please enter a valid email!": "Please enter a valid email!",
+  "validEmail": "Please enter a valid email!",
+  "fillInput" : "Please fill all inputs",
+  "saveMessage" : "Nothing to save",
   "home": "Home",
   "createQR": "Create QR Code",
   "qrInput": "QR input",
@@ -21,5 +23,6 @@
   "preview": "preview",
   "qrTitle": "QR Title",
   "delete" : "Delete",
-  "back" : "Back"
+  "back" : "Back",
+  "download" : "download"
 }
