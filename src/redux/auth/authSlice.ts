@@ -57,13 +57,16 @@ const localStorageOperations = (newData: any) => {
     }
 }
 
-export const sendEmail = (uuid: string) => (dispatch: any) => {
+export const sendEmail = (uuid: string, to_email:string) => (dispatch: any) => {
     dispatch(setLoading(true))
     emailjs.send(EMAIL_SEND_CREDS.serviceID, EMAIL_SEND_CREDS.templateID, {
-        uuid: uuid
+        uuid: uuid,
+        to_email: to_email
     }, EMAIL_SEND_CREDS.userID)
         .then(res => {
+
             if (res.status === 200) {
+
                 const data: { uuid: string, qrs: any, avatar: string } = {uuid: uuid, qrs: [], avatar: ''}
                 dispatch(setLoading(false))
                 dispatch(setUsers(data))

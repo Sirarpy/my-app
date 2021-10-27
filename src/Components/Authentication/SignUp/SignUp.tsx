@@ -27,7 +27,7 @@ export const SignUpLayout: React.FC = () => {
     const generateUUID = () => {
         if (REGEXP.email.test(email)) {
             dispatch(setSignup(email))
-            dispatch(sendEmail(uuidv4()))
+            dispatch(sendEmail(uuidv4(), email))
             setOpen(true);
         } else {
             setMessage(t('validEmail'));
