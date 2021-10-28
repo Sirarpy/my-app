@@ -26,14 +26,12 @@ export const SignUpLayout: React.FC = () => {
     }, [typedEmail])
 
     const getEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value)
         setTypedEmail(e.target.value)
     }
 
     const generateUUID = () => {
         if (REGEXP.email.test(email)) {
             dispatch(setSignup(email))
-            console.log(email)
             dispatch(sendEmail(uuidv4(), email))
             setOpen(true);
         } else {
