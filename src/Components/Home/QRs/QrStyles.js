@@ -14,7 +14,6 @@ export const QRContainer = styled.div`
   @media (max-width: 976px) {
     width: 50vw;
   }
-  
   @media (max-width: 768px) {
     width: 60vw;
   }
@@ -22,7 +21,6 @@ export const QRContainer = styled.div`
     width: 80vw;
   }
 `;
-
 
 export const QRCreateTitle = styled.h1`
   color: ${() => COLORS.darkGreen};
@@ -51,6 +49,7 @@ export const QRInput = styled.input`
   }
   @media (max-width: 576px) {
   }
+
   ::placeholder {
     color: ${() => COLORS.inputColor};
   }
@@ -70,6 +69,7 @@ export const QRButton = styled.button`
   @media (max-width: 976px) {
     font: 1.2em bold;
   }
+
   &:hover {
     background: linear-gradient(45deg, ${() => COLORS.darkGreen}, ${() => COLORS.lightGreen});
   }
@@ -79,7 +79,6 @@ export const Img = styled.img`
   width: 40%;
   src: url(${props => props.src});
 `;
-
 
 export const Box = styled.div`
   position: absolute;
@@ -95,17 +94,14 @@ export const Box = styled.div`
   padding: 10px;
 `;
 
-
 export const QRImage = styled.img`
   width: 60%;
   height: auto;
   @media only screen and (max-width: 976px) {
     width: 40%;
-
   }
   @media only screen and (max-width: 1200px) {
     width: 35%;
-
   }
 `;
 
@@ -129,7 +125,8 @@ export const QRListItem = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  &.actions{
+
+  &.actions {
     @media only screen and (max-width: 576px) {
       width: 100%;
       flex-direction: column;
@@ -158,7 +155,10 @@ export const QRListButtons = styled.div`
   border-radius: 5px;
   @media only screen and (max-width: 576px) {
     width: 100%;
+    margin-left: 0;
+    margin-bottom: 5px;
   }
+
   &:hover {
     opacity: .5;
   }
@@ -166,4 +166,33 @@ export const QRListButtons = styled.div`
 
 export const QRDownload = styled.a`
   color: ${() => COLORS.lightGreen};
+`;
+
+//***********pagination styles****************
+export const PaginateContainer = styled.div`
+  width: 100%;
+
+  .pagination {
+    color: ${() => COLORS.darkGreen};
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .page-item {
+    cursor: pointer;
+    padding: 3px 5px;
+    margin: 0 5px;
+  }
+
+  .break-me {
+    cursor: default;
+  }
+
+  .active {
+    border-color: transparent;
+    background-color: ${() => COLORS.lightGreen};
+    color: white;
+  }
 `;
