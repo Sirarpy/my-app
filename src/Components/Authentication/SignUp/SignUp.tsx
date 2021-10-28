@@ -23,10 +23,10 @@ export const SignUpLayout: React.FC = () => {
 
     useEffect(() => {
         setEmail(typedEmail)
-    }, [])
+    }, [typedEmail])
 
     const getEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-        // setEmail(e.target.value)
+        console.log(e.target.value)
         setTypedEmail(e.target.value)
     }
 
