@@ -22,7 +22,7 @@ export const MainLayout: React.FC = () => {
     const loginStatus = useSelector(getLoginUser)
 
     return (
-        <div>
+        <>
             <GlobalStyle/>
             <Router >
                 <Switch>
@@ -41,6 +41,6 @@ export const MainLayout: React.FC = () => {
                     </MainLayoutContainer>
                 </Switch>
             </Router>
-        </div>
+        </>
     )
 }

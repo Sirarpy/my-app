@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import * as SC from "../AuthenticationStyles";
 import {useHistory} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
@@ -13,20 +13,27 @@ import {Back} from "../../Back/Back";
 
 export const SignUpLayout: React.FC = () => {
     const {t} = useTranslation();
-    const dispatch = useDispatch()
-    const [email, setEmail] = useState<string>("")
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState<string>("");
     const [open, setOpen] = React.useState(false);
+    const [typedEmail, setTypedEmail] = useState('')
     const [message, setMessage] = useState([]);
-    const history = useHistory()
-    const loading = useSelector(getLoader)
+    const history = useHistory();
+    const loading = useSelector(getLoader);
+
+    useEffect(() => {
+        setEmail(typedEmail)
+    }, [])
 
     const getEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value)
+        // setEmail(e.target.value)
+        setTypedEmail(e.target.value)
     }
 
     const generateUUID = () => {
         if (REGEXP.email.test(email)) {
             dispatch(setSignup(email))
+            console.log(email)
             dispatch(sendEmail(uuidv4(), email))
             setOpen(true);
         } else {

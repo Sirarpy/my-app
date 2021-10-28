@@ -2,10 +2,15 @@ import styled from "styled-components";
 import {COLORS} from "../../constants";
 
 export const HomeContainer = styled.div`
-  width: 80%;
-  margin: 15% auto 0;
+  width: 50%;
+  margin: 5% auto ;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
+
 export const HomeContent = styled.div`
+  margin: 7% 0;
   display: flex;
   justify-content: space-around;
   align-items: center;

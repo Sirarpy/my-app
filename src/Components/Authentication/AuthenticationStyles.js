@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {COLORS} from "../../constants";
 
 export const Container = styled.div`
-  width: 30%;
+  width: 25%;
   border-radius: 0 0 10px 10px;
   box-sizing: border-box;
   margin: 15% auto 0;
@@ -13,8 +13,8 @@ export const Container = styled.div`
   border-top: 1px solid #3694b1;
   &:before {
     border-bottom: 10vw solid rgb(57 183 221);
-    border-left: 15vw solid transparent;
-    border-right: 15vw solid transparent;
+    border-left: 12.5vw solid transparent;
+    border-right: 12.5vw solid transparent;
     content: "";
     height: 0;
     left: 0;
