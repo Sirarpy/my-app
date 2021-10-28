@@ -7,13 +7,11 @@ import Modal from '@mui/material/Modal';
 import {useTranslation} from 'react-i18next';
 import {Back} from "../../../Back/Back";
 import {useHistory} from "react-router-dom";
-import Index from "best-react-pagination";
 
 interface UserType {
     uuid: string
     qrs: any
 }
-
 
 export const QRList: React.FC = () => {
     const {t} = useTranslation()
@@ -24,7 +22,6 @@ export const QRList: React.FC = () => {
     const currentUserQrs = _.get(currentUser[0], 'qrs')
     const history = useHistory()
     const [newQrs, setNewQrs] = useState<any>([])
-    const [index, setIndex] = useState(0);
 
     useEffect(() => {
         setNewQrs(currentUserQrs)
@@ -90,23 +87,6 @@ export const QRList: React.FC = () => {
                         )
                     }) : false
             }
-
-            {/*<ReactPaginate*/}
-            {/*    previousLabel={'prev'}*/}
-            {/*    nextLabel={'next'}*/}
-            {/*    pageCount={pages}*/}
-            {/*    onPageChange={this.handlePageClick}*/}
-            {/*    containerClassName={'pagination'}*/}
-            {/*    activeClassName={'active'}*/}
-            {/*/>*/}
-
-            {/*<Index*/}
-            {/*    paginationStart={0}*/}
-            {/*    currentIndex={index}*/}
-            {/*    setIndex={setIndex}*/}
-            {/*    totalPages={10}*/}
-            {/*/>*/}
-
             <Back onClick={() => goToCurrentPage('/home')}/>
         </SC.QRContainer>
     )
