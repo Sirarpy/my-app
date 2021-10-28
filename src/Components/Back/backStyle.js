@@ -1,28 +1,32 @@
 import styled from "styled-components";
+import {COLORS} from "../../constants";
 
 export const Back = styled.button`
   font-size: 16px;
   padding: 10px 15px;
-  //background: linear-gradient(11deg, #07181d, #39b7dd);
-  background: rgba(0,0,0,.87);
-  color: rgb(57 183 221);
+  background: ${() => COLORS.lightGreen};
+  color: ${() => COLORS.inputColor};
   cursor: pointer;
   text-transform: uppercase;
   width: 30%;
   margin: 10px auto;
   display: flex;
   justify-content: center;
+  border: none;
+  outline: none;
   &:hover {
-    background: linear-gradient(11deg, #03262d, #39b7dd);
+    background: linear-gradient(11deg, ${() => COLORS.darkGreen},  ${() => COLORS.lightGreen});
     transition: 0.2s;
     color: rgb(0,0,0,.87);
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     width: 40%;
-
+  }
+  @media (max-width: 768px) {
+    width: 50%;
   }
   @media (max-width: 576px) {
-    width: 50%;
+    width: 60%;
   }
 `;
 

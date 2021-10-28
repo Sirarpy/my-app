@@ -6,7 +6,7 @@ export const LanguageContainer = styled.div`
   margin: 0 auto;
   padding: 1vw 2vw;
   box-sizing: border-box;
-  background: ${() => COLORS.blue} ;
+  background: ${() => COLORS.darkGreen} ;
 `;
 
 export const LanguageImage = styled.img`
@@ -15,12 +15,4 @@ export const LanguageImage = styled.img`
   height: 40px;
   margin-right: 10px;
   cursor: pointer;
-  //@media (max-width: 768px) {
-  //  margin-right: 10px;
-  //
-  //
-  //}
-  //@media (max-width: 576px) {
-  //  width: 40%;
-  //}
 `;

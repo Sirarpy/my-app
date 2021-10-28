@@ -31,40 +31,35 @@ export const BubbleContainer = styled.div`
 export const Bubble = styled.div`
   content: "";
   border-radius: 54% 46% 42% 58% / 60% 58% 42% 40%;
-  background-image: linear-gradient(to right top,#051937,#383544,#0ea2af,#002dbf,#39b7dd);
+  background-image: linear-gradient(to right top,#00989d,#3faba0,#9ae3e5,#67f9ff,#15d1db);
   animation: vawe 5s linear infinite;
   position: absolute;
   top: 0;
   left: 0;
-  box-shadow: 5px 5px 7px ${() => COLORS.blue};
-
+  box-shadow: 5px 5px 7px ${() => COLORS.lightGreen};
+  &:hover {
+    background:${() => COLORS.darkGreen};
+  }
+  }
 `;
-
 
 export const ContainerItem = styled.div`
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  border: 1px solid ${() => COLORS.blue};
-  box-shadow: 3px 3px 5px ${() => COLORS.blue};
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   letter-spacing: 1px;
   font-size: 18px;
-  background-color: ${() => COLORS.blue};
-  color: ${() => COLORS.gray};
-
+  color: ${() => COLORS.inputColor};
   &:hover  {
     transition: 0.4s;
-    background-color: ${() => COLORS.gray};
-    // color: ${() => COLORS.white};
     cursor: pointer;
-    color: ${() => COLORS.blue};
+    color: ${() => COLORS.lightGreen};
   }
 `;
-
 
 export const HomeTitle = styled.h2`
   color: ${() => COLORS.blue};
@@ -72,16 +67,14 @@ export const HomeTitle = styled.h2`
   text-transform: uppercase;
 `;
 
-
 export const Avatar = styled.div`
   cursor: pointer;
   width: 100px;
   height: 100px;
-  border: 1px solid ${() => COLORS.blue};
+  border: 1px solid ${() => COLORS.darkGreen};
   background-position: center;
   background-size: cover;
   border-radius: 50%;
-  box-shadow: 1px 1px 3px ${() => COLORS.blue};
-
+  box-shadow: 1px 1px 3px ${() => COLORS.lightGreen};
 `;
 

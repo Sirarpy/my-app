@@ -3,7 +3,7 @@ import {COLORS} from "../../../constants"
 
 export const QRContainer = styled.div`
   width: 40vw;
-  border: 1px solid ${() => COLORS.blue};
+  border: 1px solid ${() => COLORS.darkGreen};
   border-radius: 10px;
   box-sizing: border-box;
   align-items: center;
@@ -25,7 +25,7 @@ export const QRContainer = styled.div`
 
 
 export const QRCreateTitle = styled.h1`
-  color: ${() => COLORS.blue};
+  color: ${() => COLORS.darkGreen};
   text-align: center;
   @media (max-width: 768px) {
     font-size: 1.5em;
@@ -36,44 +36,42 @@ export const QRInput = styled.input`
   width: 100%;
   display: block;
   border: none;
-  border-bottom: 2px solid ${() => COLORS.blue};
+  border-bottom: 2px solid ${() => COLORS.darkGreen};
   font-size: 1em;
-  color: ${() => COLORS.blue};
+  color: ${() => COLORS.inputColor};
   padding: 0.5em 1em;
   outline: none;
   box-sizing: border-box;
-  background: #2121211a;
+  background: ${() => COLORS.lightGreen};
   margin: 1vw 0;
   @media (max-width: 976px) {
     font-size: 1.2em;
-
   }
   @media (max-width: 768px) {
   }
   @media (max-width: 576px) {
   }
   ::placeholder {
-    color: ${() => COLORS.blue};
+    color: ${() => COLORS.inputColor};
   }
 `;
 
 export const QRButton = styled.button`
-  background: linear-gradient(45deg, #39b7dd, #e8e8e8);
+  background-color: ${() => COLORS.darkGreen};;
   padding: 0.7em 1em;
   border: none;
   display: block;
   cursor: pointer;
   width: 100%;
   margin-top: 2vw;
-  color: ${() => COLORS.blue};
+  color: ${() => COLORS.lightGreen};
   font: 1em bold;
 
   @media (max-width: 976px) {
     font: 1.2em bold;
-
   }
   &:hover {
-    background: linear-gradient(45deg, #045772, #e8e8e8);
+    background: linear-gradient(45deg, ${() => COLORS.darkGreen}, ${() => COLORS.lightGreen});
   }
 `;
 
@@ -90,8 +88,8 @@ export const Box = styled.div`
   transform: translate(-50%, -50%);
   width: 400px;
   background-color: white;
-  border: 2px solid ${() => COLORS.blue};
-  box-shadow: 3px 3px 5px ${() => COLORS.blue};;
+  border: 2px solid ${() => COLORS.darkGreen};
+  box-shadow: 3px 3px 5px ${() => COLORS.darkGreen};;
   text-align: center;
   border-radius: 10px;
   padding: 10px;
@@ -120,7 +118,7 @@ export const QRList = styled.div`
   margin-top: 15px;
   align-items: center;
   //flex-direction: row;
-  background-color: ${() => COLORS.blue};
+  background-color: ${() => COLORS.lightGreen};
   @media only screen and (max-width: 1200px) {
     flex-direction: column;
   }
@@ -142,15 +140,15 @@ export const QRListItem = styled.div`
 
 export const QRTitle = styled.p`
   text-transform: uppercase;
-  color: ${() => COLORS.gray};
+  color: ${() => COLORS.inputColor};
   @media only screen and (max-width: 768px) {
     font: 1.2em bold;
   }
 `;
 
 export const QRListButtons = styled.div`
-  color: ${() => COLORS.blue};
-  background-color: ${() => COLORS.gray};
+  color: ${() => COLORS.lightGreen};
+  background-color: ${() => COLORS.darkGreen};
   margin-left: 5px;
   text-transform: uppercase;
   font-size: 14px;
@@ -167,6 +165,5 @@ export const QRListButtons = styled.div`
 `;
 
 export const QRDownload = styled.a`
-  color: ${() => COLORS.blue};
-
+  color: ${() => COLORS.lightGreen};
 `;

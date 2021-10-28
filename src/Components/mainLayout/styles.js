@@ -6,7 +6,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: Open-Sans, Helvetica, Sans-Serif;
-    //background: rgba(0, 0, 0, .87)
   }
 
   a {
